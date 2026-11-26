@@ -26,7 +26,6 @@ from curl_cffi import requests
 BASE_URL = os.environ.get("COAL_BASE_URL") or "https://coalbyte.com"
 EMAIL = (os.environ.get("EMAIL") or "").strip()
 SERVER_IDS = [s.strip() for s in (os.environ.get("SERVER_IDS") or os.environ.get("SERVER_ID") or "").split(",") if s.strip()]
-SERVER_TYPE = (os.environ.get("SERVER_TYPE") or "generic").strip()
 RENEW_INTERVAL_HOURS = float(os.environ.get("RENEW_INTERVAL_HOURS") or "84")
 STATE_FILE = os.environ.get("STATE_FILE") or "renew_state.json"
 DRY_RUN = (os.environ.get("DRY_RUN") or "").lower() in ("1", "true", "yes")
@@ -153,7 +152,7 @@ def renew_one(sess, sid):
         try:
             resp = sess.post(
                 url,
-                json={"serverId": sid, "email": EMAIL, "serverType": SERVER_TYPE},
+                json={"serverId": sid, "email": EMAIL, "serverType": "generic"},
                 timeout=60, impersonate="chrome",
             )
             if resp.status_code >= 400:

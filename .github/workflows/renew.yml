@@ -41,7 +41,6 @@ jobs:
         env:
           EMAIL: ${{ secrets.EMAIL }}
           SERVER_IDS: ${{ secrets.SERVER_IDS }}
-          SERVER_TYPE: ${{ secrets.SERVER_TYPE }}
           RENEW_INTERVAL_HOURS: ${{ vars.RENEW_INTERVAL_HOURS }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
