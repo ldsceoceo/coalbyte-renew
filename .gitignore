@@ -1,0 +1,4 @@
+agentscribe-*
+*.log
+__pycache__/
+.venv/
